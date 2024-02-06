@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shifts Logger", "Shifts Logger\Shifts Logger.csproj", "{6045221D-4264-4A85-B908-502DC6EAB2A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6045221D-4264-4A85-B908-502DC6EAB2A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6045221D-4264-4A85-B908-502DC6EAB2A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6045221D-4264-4A85-B908-502DC6EAB2A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6045221D-4264-4A85-B908-502DC6EAB2A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
