@@ -1,4 +1,5 @@
-﻿using Spectre.Console;
+﻿using Shifts_Logger.APIController;
+using Spectre.Console;
 
 namespace Shifts_Logger;
 
@@ -22,6 +23,7 @@ public class UserInterface
             switch (option)
             {
                 case Enums.MainMenuOptions.ManageShifts:
+                    ShiftMenu();
                     Console.Clear();
                     break;
                 
@@ -33,6 +35,46 @@ public class UserInterface
                     Console.Clear();
                     Console.WriteLine("Goodbye!");
                     isAppRunning = false;
+                    break;
+            }
+        }
+    }
+
+    private void ShiftMenu()
+    {
+        var isShiftMenuRunning = true;
+        while (isShiftMenuRunning)
+        {
+            Console.Clear();
+            var option = AnsiConsole.Prompt(
+                new SelectionPrompt<Enums.ShiftMenuOptions>()
+                    .Title("Contact Search Menu")
+                    .AddChoices(
+                        Enums.ShiftMenuOptions.GetShifts,
+                        Enums.ShiftMenuOptions.GetShiftById,
+                        Enums.ShiftMenuOptions.AddShifts,
+                        Enums.ShiftMenuOptions.DeleteShifts,
+                        Enums.ShiftMenuOptions.Quit
+                    ));
+            
+            switch (option)
+            {
+                case Enums.ShiftMenuOptions.GetShifts:
+                    Console.Clear();
+                    ShiftController.GetShifts();
+                    break;
+                
+                case Enums.ShiftMenuOptions.GetShiftById:
+                    Console.Clear();
+                    break;
+                
+                case Enums.ShiftMenuOptions.AddShifts:
+                    Console.Clear();
+                    break;
+                
+                case Enums.ShiftMenuOptions.Quit:
+                    Console.Clear();
+                    isShiftMenuRunning = false;
                     break;
             }
         }
