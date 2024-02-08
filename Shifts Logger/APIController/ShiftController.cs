@@ -7,13 +7,13 @@ namespace Shifts_Logger.APIController;
 
 public class ShiftController
 {
-    public static List<Shift> GetShifts()
+    public List<Shift> GetShifts()
     {
         var apiBaseUrl = "http://localhost:5056/api/";
         
         var client = new RestClient(apiBaseUrl);
         
-        var request = new RestRequest("shifts", Method.Get);
+        var request = new RestRequest("Shifts", Method.Get);
         
         var response = client.ExecuteAsync(request);
         
@@ -26,7 +26,9 @@ public class ShiftController
             var rawResponse = response.Result.Content;
             shifts = JsonConvert.DeserializeObject<List<Shift>>(rawResponse);
 
-            TableVisualEngine.ShowTable(shifts, "Shifts");
+            TableVisualEngine engine = new TableVisualEngine();
+            
+            engine.ShowTable(shifts, "Shifts");
 
             Console.ReadLine();
 
