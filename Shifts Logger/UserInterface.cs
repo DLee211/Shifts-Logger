@@ -61,7 +61,8 @@ public class UserInterface
             {
                 case Enums.ShiftMenuOptions.GetShifts:
                     Console.Clear();
-                    ShiftController.GetShifts();
+                    ShiftController shiftManager = new ShiftController();
+                    shiftManager.GetShifts();
                     break;
                 
                 case Enums.ShiftMenuOptions.GetShiftById:
