@@ -1,4 +1,5 @@
 ﻿using Shifts_Logger.APIController;
+using Shifts_Logger.Services;
 using Spectre.Console;
 
 namespace Shifts_Logger;
@@ -67,6 +68,7 @@ public class UserInterface
                 
                 case Enums.ShiftMenuOptions.GetShiftById:
                     Console.Clear();
+                    ShiftService.GetShiftById();
                     break;
                 
                 case Enums.ShiftMenuOptions.AddShifts:
