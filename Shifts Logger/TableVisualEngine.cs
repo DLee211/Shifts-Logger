@@ -23,7 +23,7 @@ public class TableVisualEngine
 
         ConsoleTableBuilder
             .From(flattenedData)
-            .WithColumn("Worker Name", "Start Time", "End Time", "Worker")
+            .WithColumn("Worker ID", "Start Time", "End Time", "Worker")
             .WithFormat(ConsoleTableBuilderFormat.Default)
             .ExportAndWriteLine();
     }
