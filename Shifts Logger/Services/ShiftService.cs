@@ -12,4 +12,12 @@ public class ShiftService
         ShiftController.GetShiftById(id);
 
     }
+
+    public static void DeletShiftById()
+    {
+        Console.WriteLine("Enter the shift Id that you want to delete:");
+        var id = Console.ReadLine();
+        
+        ShiftController.DeleteShiftById(id);
+    }
 }

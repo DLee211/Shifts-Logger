@@ -64,4 +64,24 @@ public class ShiftController
 
         }
     }
+
+    public static void DeleteShiftById(string id)
+    {
+        var apiBaseUrl = "http://localhost:5056/api/";
+
+        var client = new RestClient(apiBaseUrl);
+
+        var request = new RestRequest($"Shifts/{id}", Method.Delete);
+
+        var response = client.ExecuteAsync(request);
+        
+        if (response.Result.StatusCode == HttpStatusCode.OK)
+        {
+            Console.WriteLine($"Shift with ID {id} deleted successfully.");
+        }
+        else
+        {
+            Console.WriteLine($"Failed to delete shift with ID {id}. Error: {response.Result.ErrorMessage}");
+        }
+    }
 }

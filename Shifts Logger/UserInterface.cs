@@ -75,6 +75,11 @@ public class UserInterface
                     Console.Clear();
                     break;
                 
+                case Enums.ShiftMenuOptions.DeleteShifts:
+                    Console.Clear();
+                    ShiftService.DeletShiftById();
+                    break;
+                
                 case Enums.ShiftMenuOptions.Quit:
                     Console.Clear();
                     isShiftMenuRunning = false;
