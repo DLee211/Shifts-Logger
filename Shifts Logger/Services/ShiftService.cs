@@ -68,4 +68,30 @@ public class ShiftService
 
         ShiftController.DeleteShift(id);
     }
+
+    public static void UpdateShiftFromInput()
+    {
+        Console.WriteLine("Enter shift Id of shift you want to update:");
+        var shiftId = Int32.Parse(Console.ReadLine());
+        
+        DateTime startTime = DateTime.Now;
+        
+        Console.WriteLine("Enter the number of hours for the shift duration:");
+
+        var hours = Console.ReadLine();
+
+        int shiftHours = Int32.Parse(hours);
+       
+        DateTime endTime = startTime.AddHours(shiftHours);
+        
+        ShiftDto newShift = new ShiftDto
+        {
+            ShiftId = shiftId,
+            StartTime = startTime.ToString(),
+            EndTime = endTime.ToString(),
+            WorkerId = 0
+        };
+
+        ShiftController.UpdateShift(newShift);
+    }
 }

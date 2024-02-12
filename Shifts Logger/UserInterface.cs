@@ -54,6 +54,7 @@ public class UserInterface
                         Enums.ShiftMenuOptions.GetShifts,
                         Enums.ShiftMenuOptions.GetShiftById,
                         Enums.ShiftMenuOptions.AddShifts,
+                        Enums.ShiftMenuOptions.UpdateShifts,
                         Enums.ShiftMenuOptions.DeleteShifts,
                         Enums.ShiftMenuOptions.Quit
                     ));
@@ -74,6 +75,12 @@ public class UserInterface
                 
                 case Enums.ShiftMenuOptions.AddShifts:
                     ShiftService.AddShiftFromInput();
+                    break;
+                
+                case Enums.ShiftMenuOptions.UpdateShifts:
+                    shiftManager = new ShiftController();
+                    shiftManager.GetShifts();
+                    ShiftService.UpdateShiftFromInput();
                     break;
                 
                 case Enums.ShiftMenuOptions.DeleteShifts:

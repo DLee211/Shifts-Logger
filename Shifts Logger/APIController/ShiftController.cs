@@ -96,4 +96,16 @@ public class ShiftController
 
         client.Execute<RestResponse>(request);
     }
+
+    public static void UpdateShift(ShiftDto newShift)
+    {
+        var apiBaseUrl = "http://localhost:5056/api/";
+        
+        var client = new RestClient(apiBaseUrl);
+        
+        var request = new RestRequest($"Shifts/{newShift.ShiftId}", Method.Put);
+        request.AddJsonBody(newShift);
+
+        client.Execute<RestResponse>(request);
+    }
 }
