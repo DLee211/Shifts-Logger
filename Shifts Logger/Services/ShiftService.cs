@@ -11,7 +11,6 @@ public class ShiftService
         var id = Console.ReadLine();
 
         ShiftController.GetShiftById(id);
-
     }
 
     public static void AddShiftFromInput()
@@ -60,5 +59,13 @@ public class ShiftService
         };
 
         return newShift;
+    }
+
+    public static void DeletShiftById()
+    {
+        Console.WriteLine("Enter shift Id of shift you want to delete:");
+        var id = Console.ReadLine();
+
+        ShiftController.DeleteShift(id);
     }
 }

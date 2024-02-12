@@ -30,8 +30,6 @@ public class ShiftController
             
             engine.ShowTable(shifts, "Shifts");
 
-            Console.ReadLine();
-
         }
 
         return shifts;
@@ -86,5 +84,16 @@ public class ShiftController
             Console.WriteLine($"Failed to add shift. Error: {response.ErrorMessage}");
             return false;
         }
+    }
+
+    public static void DeleteShift(string? id)
+    {
+        var apiBaseUrl = "http://localhost:5056/api/";
+        
+        var client = new RestClient(apiBaseUrl);
+        
+        var request = new RestRequest($"Shifts/{id}", Method.Delete);
+
+        client.Execute<RestResponse>(request);
     }
 }

@@ -64,6 +64,7 @@ public class UserInterface
                     Console.Clear();
                     ShiftController shiftManager = new ShiftController();
                     shiftManager.GetShifts();
+                    Console.ReadLine();
                     break;
                 
                 case Enums.ShiftMenuOptions.GetShiftById:
@@ -76,8 +77,9 @@ public class UserInterface
                     break;
                 
                 case Enums.ShiftMenuOptions.DeleteShifts:
-                    Console.Clear();
-                    // ShiftService.DeletShiftById();
+                    shiftManager = new ShiftController();
+                    shiftManager.GetShifts();
+                    ShiftService.DeletShiftById();
                     break;
                 
                 case Enums.ShiftMenuOptions.Quit:
