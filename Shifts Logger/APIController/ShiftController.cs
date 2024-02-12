@@ -65,28 +65,26 @@ public class ShiftController
         }
     }
 
-    public static bool AddShift(Shift newShift)
+    public static bool AddShift(ShiftDto newShift)
     {
         var apiBaseUrl = "http://localhost:5056/api/";
-    
+
         var client = new RestClient(apiBaseUrl);
-    
+
         var request = new RestRequest("Shifts", Method.Post);
-        
         request.AddJsonBody(newShift);
-        
-        var response = client.ExecuteAsync(request);
-    
-        if (response.Result.StatusCode == HttpStatusCode.Created)
+
+        var response = client.Execute<RestResponse>(request); // Use non-generic Execute method
+
+        if (response.StatusCode == HttpStatusCode.Created)
         {
             Console.WriteLine("Shift added successfully.");
             return true;
         }
         else
         {
-            Console.WriteLine($"Failed to add shift. Error: {response.Result.ErrorMessage}");
+            Console.WriteLine($"Failed to add shift. Error: {response.ErrorMessage}");
             return false;
         }
-        
     }
 }

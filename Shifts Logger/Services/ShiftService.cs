@@ -16,7 +16,7 @@ public class ShiftService
 
     public static void AddShiftFromInput()
     {
-        Shift newShift = CreateShiftFromUserInput();
+        ShiftDto newShift = CreateShiftFromUserInput();
 
         if (newShift != null)
         {
@@ -33,7 +33,7 @@ public class ShiftService
         }
     }
 
-    private static Shift CreateShiftFromUserInput()
+    private static ShiftDto CreateShiftFromUserInput()
     {
         DateTime startTime = DateTime.Now;
         
@@ -52,11 +52,11 @@ public class ShiftService
             return null;
         }
 
-        Shift newShift = new Shift
+        ShiftDto newShift = new ShiftDto
         {
-            startTime = startTime.ToString(),
-            endTime = endTime.ToString(),
-            workerId = workerId
+            StartTime = startTime.ToString(),
+            EndTime = endTime.ToString(),
+            WorkerId = workerId
         };
 
         return newShift;
