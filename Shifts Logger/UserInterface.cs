@@ -72,12 +72,12 @@ public class UserInterface
                     break;
                 
                 case Enums.ShiftMenuOptions.AddShifts:
-                    Console.Clear();
+                    ShiftService.AddShiftFromInput();
                     break;
                 
                 case Enums.ShiftMenuOptions.DeleteShifts:
                     Console.Clear();
-                    ShiftService.DeletShiftById();
+                    // ShiftService.DeletShiftById();
                     break;
                 
                 case Enums.ShiftMenuOptions.Quit:

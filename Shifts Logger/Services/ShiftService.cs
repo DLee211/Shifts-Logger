@@ -1,4 +1,5 @@
 ﻿using Shifts_Logger.APIController;
+using Shifts_Logger.Models;
 
 namespace Shifts_Logger.Services;
 
@@ -13,11 +14,51 @@ public class ShiftService
 
     }
 
-    public static void DeletShiftById()
+    public static void AddShiftFromInput()
     {
-        Console.WriteLine("Enter the shift Id that you want to delete:");
-        var id = Console.ReadLine();
+        ShiftDto newShift = CreateShiftFromUserInput();
+
+        if (newShift != null)
+        {
+            bool isSuccess = ShiftController.AddShift(newShift);
+            
+            if (isSuccess)
+            {
+                Console.WriteLine("Shift added successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to add shift.");
+            }
+        }
+    }
+
+    private static ShiftDto CreateShiftFromUserInput()
+    {
+        DateTime startTime = DateTime.Now;
         
-        ShiftController.DeleteShiftById(id);
+        Console.WriteLine("Enter the number of hours for the shift duration:");
+
+        var hours = Console.ReadLine();
+
+        int shiftHours = Int32.Parse(hours);
+       
+        DateTime endTime = startTime.AddHours(shiftHours);
+
+        Console.WriteLine("Enter the worker ID: ");
+        if (!int.TryParse(Console.ReadLine(), out int workerId))
+        {
+            Console.WriteLine("Invalid worker ID format.");
+            return null;
+        }
+
+        ShiftDto newShift = new ShiftDto
+        {
+            StartTime = startTime.ToString(),
+            EndTime = endTime.ToString(),
+            WorkerId = workerId
+        };
+
+        return newShift;
     }
 }
