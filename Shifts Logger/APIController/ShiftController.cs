@@ -7,7 +7,7 @@ namespace Shifts_Logger.APIController;
 
 public class ShiftController
 {
-    public List<Shift> GetShifts()
+    public void GetShifts()
     {
         var apiBaseUrl = "http://localhost:5056/api/";
         
@@ -28,11 +28,9 @@ public class ShiftController
 
             TableVisualEngine engine = new TableVisualEngine();
             
-            engine.ShowTable(shifts, "Shifts");
+            engine.ShowShiftTable(shifts, "Shifts");
 
         }
-
-        return shifts;
     }
 
     public static void GetShiftById(string id)
@@ -56,7 +54,7 @@ public class ShiftController
 
             TableVisualEngine engine = new TableVisualEngine();
             
-            engine.ShowTable(new List<Shift> { shift }, "Shifts");
+            engine.ShowShiftTable(new List<Shift> { shift }, "Shifts");
 
             Console.ReadLine();
 
