@@ -29,6 +29,7 @@ public class UserInterface
                     break;
                 
                 case Enums.MainMenuOptions.ManageWorkers:
+                    WorkerMenu();
                     Console.Clear();
                     break;
                 
@@ -41,6 +42,40 @@ public class UserInterface
         }
     }
 
+    private void WorkerMenu()
+    {
+        var isWorkerMenuRunning = true;
+        while (isWorkerMenuRunning)
+        {
+            Console.Clear();
+            var option = AnsiConsole.Prompt(
+                new SelectionPrompt<Enums.WorkerMenuOptions>()
+                    .Title("Worker Menu")
+                    .AddChoices(
+                        Enums.WorkerMenuOptions.AddWorker,
+                        Enums.WorkerMenuOptions.UpdateWorker,
+                        Enums.WorkerMenuOptions.DeleteWorker,
+                        Enums.WorkerMenuOptions.Quit
+                        ));
+            switch (option)
+            {
+                case Enums.WorkerMenuOptions.AddWorker:
+                    break;
+                
+                case  Enums.WorkerMenuOptions.UpdateWorker:
+                    break;
+                
+                case Enums.WorkerMenuOptions.DeleteWorker:
+                    break;
+                
+                case Enums.WorkerMenuOptions.Quit:
+                    isWorkerMenuRunning = false;
+                    break;
+                
+            }
+        }
+    }
+
     private void ShiftMenu()
     {
         var isShiftMenuRunning = true;
@@ -49,7 +84,7 @@ public class UserInterface
             Console.Clear();
             var option = AnsiConsole.Prompt(
                 new SelectionPrompt<Enums.ShiftMenuOptions>()
-                    .Title("Contact Search Menu")
+                    .Title("Shift Menu")
                     .AddChoices(
                         Enums.ShiftMenuOptions.GetShifts,
                         Enums.ShiftMenuOptions.GetShiftById,
