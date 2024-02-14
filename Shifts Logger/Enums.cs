@@ -24,6 +24,7 @@ public class Enums
         AddWorker,
         DeleteWorker,
         UpdateWorker,
+        ViewWorkers,
         Quit
     }
 }
