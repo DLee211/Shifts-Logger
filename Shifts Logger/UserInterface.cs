@@ -55,14 +55,20 @@ public class UserInterface
                         Enums.WorkerMenuOptions.AddWorker,
                         Enums.WorkerMenuOptions.UpdateWorker,
                         Enums.WorkerMenuOptions.DeleteWorker,
+                        Enums.WorkerMenuOptions.ViewWorkers,
                         Enums.WorkerMenuOptions.Quit
                         ));
             switch (option)
             {
                 case Enums.WorkerMenuOptions.AddWorker:
+                    Console.Clear();
+                    WorkerService.AddWorkerFromInput();
                     break;
                 
                 case  Enums.WorkerMenuOptions.UpdateWorker:
+                    break;
+                
+                case  Enums.WorkerMenuOptions.ViewWorkers:
                     break;
                 
                 case Enums.WorkerMenuOptions.DeleteWorker:
