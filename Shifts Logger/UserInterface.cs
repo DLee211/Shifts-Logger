@@ -65,10 +65,14 @@ public class UserInterface
                     WorkerService.AddWorkerFromInput();
                     break;
                 
-                case  Enums.WorkerMenuOptions.UpdateWorker:
+                case Enums.WorkerMenuOptions.UpdateWorker:
                     break;
                 
                 case  Enums.WorkerMenuOptions.ViewWorkers:
+                    Console.Clear();
+                    WorkerController workerController = new WorkerController();
+                    workerController.GetWorkers();
+                    Console.ReadLine();
                     break;
                 
                 case Enums.WorkerMenuOptions.DeleteWorker:

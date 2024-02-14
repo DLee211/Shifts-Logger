@@ -6,7 +6,7 @@ namespace Shifts_Logger;
 
 public class TableVisualEngine
 {
-    public void ShowTable<T>(List<T> tableData, [AllowNull] string tableName) where T : Shift
+    public void ShowShiftTable<T>(List<T> tableData, [AllowNull] string tableName) where T : Shift
     {
         Console.Clear();
 
@@ -24,6 +24,27 @@ public class TableVisualEngine
         ConsoleTableBuilder
             .From(flattenedData)
             .WithColumn("Shift ID", "Start Time", "End Time", "Worker")
+            .WithFormat(ConsoleTableBuilderFormat.Default)
+            .ExportAndWriteLine();
+    }
+    
+    public void ShowWorkerTable<T>(List<T> tableData, [AllowNull] string tableName) where T : WorkerDto
+    {
+        Console.Clear();
+
+        if (tableName == null)
+            tableName = "";
+
+        var flattenedData = tableData.Select(worker => new
+        {
+            WorkerId = worker.WorkerId,
+            FirstName = worker.FirstName,
+            LastName = worker.LastName
+        }).ToList();
+
+        ConsoleTableBuilder
+            .From(flattenedData)
+            .WithColumn("WorkerId", "First Name", "Last Name")
             .WithFormat(ConsoleTableBuilderFormat.Default)
             .ExportAndWriteLine();
     }

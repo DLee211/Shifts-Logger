@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using Newtonsoft.Json;
 using RestSharp;
 using Shifts_Logger.Models;
 
@@ -26,6 +27,29 @@ public class WorkerController
         {
             Console.WriteLine($"Failed to add worker. Error: {response.ErrorMessage}");
             return false;
+        }
+    }
+
+    public void GetWorkers()
+    {
+        var apiBaseUrl = "http://localhost:5056/api/";
+
+        var client = new RestClient(apiBaseUrl);
+
+        var request = new RestRequest("Workers", Method.Get);
+
+        var response = client.ExecuteAsync(request);
+
+        List<WorkerDto> workers = new();
+
+        if (response.Result.StatusCode == HttpStatusCode.OK)
+        {
+            var rawResponse = response.Result.Content;
+            workers = JsonConvert.DeserializeObject<List<WorkerDto>>(rawResponse);
+            
+            TableVisualEngine engine = new TableVisualEngine();
+            
+            engine.ShowWorkerTable(workers, "Workers");
         }
     }
 }

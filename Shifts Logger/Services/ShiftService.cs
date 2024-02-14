@@ -43,6 +43,9 @@ public class ShiftService
         int shiftHours = Int32.Parse(hours);
        
         DateTime endTime = startTime.AddHours(shiftHours);
+        
+        WorkerController workerController = new WorkerController();
+        workerController.GetWorkers();
 
         Console.WriteLine("Enter the worker ID: ");
         if (!int.TryParse(Console.ReadLine(), out int workerId))
