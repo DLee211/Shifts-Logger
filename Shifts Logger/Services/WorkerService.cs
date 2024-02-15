@@ -40,4 +40,12 @@ public class WorkerService
 
         return newWorker;
     }
+
+    public static void DeleteWorkerFromInput()
+    {
+        Console.WriteLine("Input the workerId of the worker you want to delete:");
+        var workerId = Console.ReadLine();
+
+        WorkerController.DeleteWorker(workerId);
+    }
 }

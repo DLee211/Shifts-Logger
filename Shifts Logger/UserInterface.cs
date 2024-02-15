@@ -76,6 +76,10 @@ public class UserInterface
                     break;
                 
                 case Enums.WorkerMenuOptions.DeleteWorker:
+                    Console.Clear();
+                    workerController = new WorkerController();
+                    workerController.GetWorkers();
+                    WorkerService.DeleteWorkerFromInput();
                     break;
                 
                 case Enums.WorkerMenuOptions.Quit:
