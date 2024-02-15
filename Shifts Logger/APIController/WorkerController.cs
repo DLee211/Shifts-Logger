@@ -1,15 +1,18 @@
 ﻿using System.Net;
 using Newtonsoft.Json;
 using RestSharp;
+using Shifts_Logger.Configuration;
 using Shifts_Logger.Models;
 
 namespace Shifts_Logger.APIController;
 
 public class WorkerController
 {
+    
+    static string apiBaseUrl = APIConfiguration.ApiBaseUrl;
+    
     public static bool AddWorker(WorkerDto newWorker)
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
 
         var client = new RestClient(apiBaseUrl);
         
@@ -32,8 +35,6 @@ public class WorkerController
 
     public void GetWorkers()
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-
         var client = new RestClient(apiBaseUrl);
 
         var request = new RestRequest("Workers", Method.Get);
@@ -55,8 +56,6 @@ public class WorkerController
 
     public static void DeleteWorker(string? workerId)
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-        
         var client = new RestClient(apiBaseUrl);
         
         var request = new RestRequest($"Workers/{workerId}", Method.Delete);
@@ -66,8 +65,6 @@ public class WorkerController
 
     public static void UpdateWorker(WorkerDto newWorker)
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-        
         var client = new RestClient(apiBaseUrl);
         
         var request = new RestRequest($"Workers/{newWorker.WorkerId}/name", Method.Put);

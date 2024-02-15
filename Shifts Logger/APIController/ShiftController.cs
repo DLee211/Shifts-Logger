@@ -1,16 +1,16 @@
 ﻿using System.Net;
 using Newtonsoft.Json;
 using RestSharp;
+using Shifts_Logger.Configuration;
 using Shifts_Logger.Models;
 
 namespace Shifts_Logger.APIController;
 
 public class ShiftController
 {
+    static string apiBaseUrl = APIConfiguration.ApiBaseUrl;
     public void GetShifts()
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-        
         var client = new RestClient(apiBaseUrl);
         
         var request = new RestRequest("Shifts", Method.Get);
@@ -35,8 +35,6 @@ public class ShiftController
 
     public static void GetShiftById(string id)
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-        
         var client = new RestClient(apiBaseUrl);
         
         var request = new RestRequest($"Shifts/{id}", Method.Get);
@@ -63,8 +61,6 @@ public class ShiftController
 
     public static bool AddShift(ShiftDto newShift)
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-
         var client = new RestClient(apiBaseUrl);
 
         var request = new RestRequest("Shifts", Method.Post);
@@ -86,8 +82,6 @@ public class ShiftController
 
     public static void DeleteShift(string? id)
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-        
         var client = new RestClient(apiBaseUrl);
         
         var request = new RestRequest($"Shifts/{id}", Method.Delete);
@@ -97,8 +91,6 @@ public class ShiftController
 
     public static void UpdateShift(ShiftDto newShift)
     {
-        var apiBaseUrl = "http://localhost:5056/api/";
-        
         var client = new RestClient(apiBaseUrl);
         
         var request = new RestRequest($"Shifts/{newShift.ShiftId}", Method.Put);
