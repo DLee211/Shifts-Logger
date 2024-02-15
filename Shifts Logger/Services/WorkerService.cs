@@ -48,4 +48,25 @@ public class WorkerService
 
         WorkerController.DeleteWorker(workerId);
     }
+
+    public static void UpdateWorkerFromInput()
+    {
+        Console.WriteLine("Input the workerId of the worker you want to update:");
+        var workerId = Console.ReadLine();
+
+        Console.WriteLine("First Name?");
+        var firstName = Console.ReadLine();
+        
+        Console.WriteLine("Last Name?");
+        var lastName = Console.ReadLine();
+        
+        WorkerDto newWorker = new WorkerDto
+        {
+            WorkerId = Int32.Parse(workerId),
+            FirstName = firstName,
+            LastName = lastName
+        };
+
+        WorkerController.UpdateWorker(newWorker);
+    }
 }
