@@ -52,4 +52,15 @@ public class WorkerController
             engine.ShowWorkerTable(workers, "Workers");
         }
     }
+
+    public static void DeleteWorker(string? workerId)
+    {
+        var apiBaseUrl = "http://localhost:5056/api/";
+        
+        var client = new RestClient(apiBaseUrl);
+        
+        var request = new RestRequest($"Workers/{workerId}", Method.Delete);
+
+        client.Execute<RestResponse>(request);
+    }
 }
