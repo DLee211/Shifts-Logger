@@ -63,4 +63,16 @@ public class WorkerController
 
         client.Execute<RestResponse>(request);
     }
+
+    public static void UpdateWorker(WorkerDto newWorker)
+    {
+        var apiBaseUrl = "http://localhost:5056/api/";
+        
+        var client = new RestClient(apiBaseUrl);
+        
+        var request = new RestRequest($"Workers/{newWorker.WorkerId}/name", Method.Put);
+        request.AddJsonBody(newWorker);
+
+        client.Execute<RestResponse>(request);
+    }
 }

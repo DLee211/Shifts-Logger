@@ -66,11 +66,16 @@ public class UserInterface
                     break;
                 
                 case Enums.WorkerMenuOptions.UpdateWorker:
+                    Console.Clear();
+                    WorkerController workerController = new WorkerController();
+                    workerController.GetWorkers();
+                    Console.ReadLine();
+                    WorkerService.UpdateWorkerFromInput();
                     break;
                 
                 case  Enums.WorkerMenuOptions.ViewWorkers:
                     Console.Clear();
-                    WorkerController workerController = new WorkerController();
+                    workerController = new WorkerController();
                     workerController.GetWorkers();
                     Console.ReadLine();
                     break;
