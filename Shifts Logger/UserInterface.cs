@@ -69,7 +69,6 @@ public class UserInterface
                     Console.Clear();
                     WorkerController workerController = new WorkerController();
                     workerController.GetWorkers();
-                    Console.ReadLine();
                     WorkerService.UpdateWorkerFromInput();
                     break;
                 
@@ -105,8 +104,8 @@ public class UserInterface
                 new SelectionPrompt<Enums.ShiftMenuOptions>()
                     .Title("Shift Menu")
                     .AddChoices(
-                        Enums.ShiftMenuOptions.GetShifts,
-                        Enums.ShiftMenuOptions.GetShiftById,
+                        Enums.ShiftMenuOptions.ViewShifts,
+                        Enums.ShiftMenuOptions.ViewShiftById,
                         Enums.ShiftMenuOptions.AddShifts,
                         Enums.ShiftMenuOptions.UpdateShifts,
                         Enums.ShiftMenuOptions.DeleteShifts,
@@ -115,16 +114,17 @@ public class UserInterface
             
             switch (option)
             {
-                case Enums.ShiftMenuOptions.GetShifts:
+                case Enums.ShiftMenuOptions.ViewShifts:
                     Console.Clear();
                     ShiftController shiftManager = new ShiftController();
                     shiftManager.GetShifts();
                     Console.ReadLine();
                     break;
                 
-                case Enums.ShiftMenuOptions.GetShiftById:
+                case Enums.ShiftMenuOptions.ViewShiftById:
                     Console.Clear();
                     ShiftService.GetShiftById();
+                    Console.ReadLine();
                     break;
                 
                 case Enums.ShiftMenuOptions.AddShifts:
