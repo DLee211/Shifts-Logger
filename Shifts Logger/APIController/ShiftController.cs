@@ -33,29 +33,28 @@ public class ShiftController
         }
     }
 
-    public static void GetShiftById(string id)
+    public static Shift GetShiftById(string id)
     {
         var client = new RestClient(apiBaseUrl);
-        
+    
         var request = new RestRequest($"Shifts/{id}", Method.Get);
-        
+    
         var response = client.ExecuteAsync(request);
-        
-
-        List<Shift> shifts = new();
-        
-        
+    
         if (response.Result.StatusCode == HttpStatusCode.OK)
         {
             var rawResponse = response.Result.Content;
             var shift = JsonConvert.DeserializeObject<Shift>(rawResponse);
-
+        
             TableVisualEngine engine = new TableVisualEngine();
-            
+        
             engine.ShowShiftTable(new List<Shift> { shift }, "Shifts");
-
-            Console.ReadLine();
-
+            
+            return shift;
+        }
+        else
+        {
+            return null;
         }
     }
 

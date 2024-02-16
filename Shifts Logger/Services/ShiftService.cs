@@ -56,6 +56,7 @@ public class ShiftService
 
         ShiftDto newShift = new ShiftDto
         {
+            
             StartTime = startTime.ToString(),
             EndTime = endTime.ToString(),
             WorkerId = workerId
@@ -77,6 +78,9 @@ public class ShiftService
         Console.WriteLine("Enter shift Id of shift you want to update:");
         var shiftId = Int32.Parse(Console.ReadLine());
         
+        
+        var existingShift = ShiftController.GetShiftById(shiftId.ToString());
+        
         DateTime startTime = DateTime.Now;
         
         Console.WriteLine("Enter the number of hours for the shift duration:");
@@ -92,7 +96,7 @@ public class ShiftService
             ShiftId = shiftId,
             StartTime = startTime.ToString(),
             EndTime = endTime.ToString(),
-            WorkerId = 0
+            WorkerId = existingShift.workerId
         };
 
         ShiftController.UpdateShift(newShift);

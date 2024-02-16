@@ -11,8 +11,8 @@ public class Enums
     
     internal enum ShiftMenuOptions
     {
-        GetShifts,
-        GetShiftById,
+        ViewShifts,
+        ViewShiftById,
         AddShifts,
         DeleteShifts,
         UpdateShifts,
