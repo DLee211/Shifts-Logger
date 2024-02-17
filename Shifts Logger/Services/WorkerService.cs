@@ -29,8 +29,12 @@ public class WorkerService
         Console.WriteLine("First Name?");
         var firstName = Console.ReadLine();
         
+        firstName = Validation.ValidateString(firstName);
+        
         Console.WriteLine("Last Name?");
         var lastName = Console.ReadLine();
+        
+        lastName = Validation.ValidateString(lastName);
         
         WorkerDto newWorker = new WorkerDto
         {
@@ -44,7 +48,11 @@ public class WorkerService
     public static void DeleteWorkerFromInput()
     {
         Console.WriteLine("Input the workerId of the worker you want to delete:");
+        
+        
         var workerId = Console.ReadLine();
+        
+        workerId = Validation.ValidateInteger(workerId);
 
         WorkerController.DeleteWorker(workerId);
     }
@@ -53,12 +61,18 @@ public class WorkerService
     {
         Console.WriteLine("Input the workerId of the worker you want to update:");
         var workerId = Console.ReadLine();
+        
+        workerId = Validation.ValidateInteger(workerId);
 
         Console.WriteLine("First Name?");
         var firstName = Console.ReadLine();
+
+        firstName = Validation.ValidateString(firstName);
         
         Console.WriteLine("Last Name?");
         var lastName = Console.ReadLine();
+        
+        lastName = Validation.ValidateString(lastName);
         
         WorkerDto newWorker = new WorkerDto
         {

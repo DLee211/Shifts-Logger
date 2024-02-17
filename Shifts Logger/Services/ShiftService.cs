@@ -9,6 +9,8 @@ public class ShiftService
     {
         Console.WriteLine("Enter shift Id");
         var id = Console.ReadLine();
+        
+        id = Validation.ValidateInteger(id);
 
         ShiftController.GetShiftById(id);
     }
@@ -39,6 +41,8 @@ public class ShiftService
         Console.WriteLine("Enter the number of hours for the shift duration:");
 
         var hours = Console.ReadLine();
+        
+        hours = Validation.ValidateInteger(hours);
 
         int shiftHours = Int32.Parse(hours);
        
@@ -48,18 +52,17 @@ public class ShiftService
         workerController.GetWorkers();
 
         Console.WriteLine("Enter the worker ID: ");
-        if (!int.TryParse(Console.ReadLine(), out int workerId))
-        {
-            Console.WriteLine("Invalid worker ID format.");
-            return null;
-        }
+
+        var workerId = Console.ReadLine();
+        
+        workerId = Validation.ValidateInteger(workerId);
 
         ShiftDto newShift = new ShiftDto
         {
             
             StartTime = startTime.ToString(),
             EndTime = endTime.ToString(),
-            WorkerId = workerId
+            WorkerId = int.Parse(workerId)
         };
 
         return newShift;
@@ -70,22 +73,27 @@ public class ShiftService
         Console.WriteLine("Enter shift Id of shift you want to delete:");
         var id = Console.ReadLine();
 
+        id = Validation.ValidateInteger(id);
+
         ShiftController.DeleteShift(id);
     }
 
     public static void UpdateShiftFromInput()
     {
         Console.WriteLine("Enter shift Id of shift you want to update:");
-        var shiftId = Int32.Parse(Console.ReadLine());
+        var shiftId = Console.ReadLine();
         
+        shiftId = Validation.ValidateInteger(shiftId);
         
-        var existingShift = ShiftController.GetShiftById(shiftId.ToString());
+        var existingShift = ShiftController.GetShiftById(shiftId);
         
         DateTime startTime = DateTime.Now;
         
         Console.WriteLine("Enter the number of hours for the shift duration:");
 
         var hours = Console.ReadLine();
+        
+        hours = Validation.ValidateInteger(hours);
 
         int shiftHours = Int32.Parse(hours);
        
@@ -93,7 +101,7 @@ public class ShiftService
         
         ShiftDto newShift = new ShiftDto
         {
-            ShiftId = shiftId,
+            ShiftId = int.Parse(shiftId),
             StartTime = startTime.ToString(),
             EndTime = endTime.ToString(),
             WorkerId = existingShift.workerId
