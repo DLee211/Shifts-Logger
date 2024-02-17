@@ -1,6 +1,6 @@
 # ShiftLogger
 
-ShiftLogger is a frontend application designed to interact with the ShiftWebApi to manage shifts for workers. It provides a user interface for adding, viewing, updating, and deleting shifts/workers.
+ShiftLogger is a frontend application designed to interact with the [ShiftWebApi](https://github.com/DLee211/ShiftLoggerWebAPI) to manage shifts for workers. It provides a user interface for adding, viewing, updating, and deleting shifts/workers.
 
 ## Technologies Used
 
